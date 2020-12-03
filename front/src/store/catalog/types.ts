@@ -6,6 +6,6 @@ export interface Product {
 };
 
 export interface CatalogState {
-    products?: Array<Product>;
+    products: Array<Product>;
     error: boolean;
 };

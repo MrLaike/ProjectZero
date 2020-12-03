@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <p>This is Catalog</p>
+        {{ catalog.products }}
         <div v-if="!catalog.error">
             <Item v-for="(product, index) in catalog.products"
                   :key="index"
@@ -35,7 +36,7 @@ export default class Catalog extends Vue {
   @Getter('allProducts', { namespace })
   allProducts: Array<Product> | undefined;
 
-  @Action('getProducts', { namespace })
+  @Action('fetchProducts', { namespace })
   prod: any;
 
   mounted() {
