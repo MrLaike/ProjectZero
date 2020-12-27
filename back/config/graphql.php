@@ -45,7 +45,7 @@ return [
     'controllers' => \Rebing\GraphQL\GraphQLController::class.'@query',
 
     // Any middleware for the graphql route group
-    'middleware' => [],
+    'middleware' => ['cors'],
 
     // Additional route group attributes
     //
@@ -101,12 +101,12 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                // 'example_query' => ExampleQuery::class,
+                'allProducts' => \App\GraphQL\Queries\AllProductsQuery::class
             ],
             'mutation' => [
                 // 'example_mutation'  => ExampleMutation::class,
             ],
-            'middleware' => [],
+            'middleware' => ['cors'],
             'method' => ['get', 'post'],
         ],
     ],
@@ -121,6 +121,7 @@ return [
     // ]
     //
     'types' => [
+        'product' => \App\GraphQL\Types\ProductType::class
         // 'example'           => ExampleType::class,
         // 'relation_example'  => ExampleRelationType::class,
         // \Rebing\GraphQL\Support\UploadType::class,
@@ -175,7 +176,7 @@ return [
     'graphiql' => [
         'prefix' => '/graphiql',
         'controller' => \Rebing\GraphQL\GraphQLController::class.'@graphiql',
-        'middleware' => [],
+        'middleware' => ['cors'],
         'view' => 'graphql::graphiql',
         'display' => env('ENABLE_GRAPHIQL', true),
     ],

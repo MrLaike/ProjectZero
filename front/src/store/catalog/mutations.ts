@@ -4,10 +4,7 @@ import { CatalogState, Product } from './types';
 
 const mutations: MutationTree<CatalogState> = {
   setProducts: (state, payload: Array<Product>) => {
-    setTimeout(() => {
-      state.products = payload;
-    },
-    2000);
+    state.products = payload;
   },
   addProduct: (state: CatalogState, payload: Product) => {
     state.error = false;

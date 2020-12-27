@@ -12,13 +12,12 @@ const modules = {
   catalog,
 };
 
-
 const vuexLocalStorage = new VuexPersist({
   key: 'source',
-  storage: localForage
-})
+  storage: window.localStorage,
+});
 
-const plugins = [vuexLocalStorage.plugin]
+const plugins = [vuexLocalStorage.plugin];
 
 export default createStore({
   state,
