@@ -12,22 +12,26 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use Rebing\GraphQL\Support\SelectFields;
 
-class AllProductsQuery extends Query
+class ProductQuery extends Query
 {
     protected $attributes = [
-        'name' => 'allProducts',
+        'name' => 'product',
         'description' => 'A query'
     ];
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('product'));
+        return GraphQL::type('product');
     }
 
     public function args(): array
     {
         return [
-
+            'link' => [
+                'name' => 'link',
+                'type' => Type::string(),
+                'rules' => ['required']
+            ],
         ];
     }
 
@@ -35,10 +39,9 @@ class AllProductsQuery extends Query
     {
         /** @var SelectFields $fields */
         $fields = $getSelectFields();
-
         $select = $fields->getSelect();
         $with = $fields->getRelations();
 
-        return Product::all();
+        return Product::where('link', $args['link'])->first();
     }
 }

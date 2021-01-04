@@ -1,30 +1,28 @@
 <template>
-    <div class="container">
+    <div>
         <p>This is Catalog</p>
-        {{ catalog.products }}
-        <div v-if="!catalog.error">
-            <Item v-for="(product, index) in catalog.products"
-                  :key="index"
+        <div v-if="!catalog.error" class="flex flex-wrap justify-center">
+            <Item v-for="(product) in catalog.products"
+                  :key="product.id"
                   :product="product"/>
         </div>
         <div v-else>
-            <p>Че то пошло не так</p>
+            <p>�� �� ����� �� ���</p>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 
+import { Component, Vue } from 'vue-property-decorator';
+import { State, Action, Getter } from 'vuex-class';
+import Item from '@/components/catalog/Item.vue';
 import store from '@/store';
 import { CatalogState, Product } from '@/store/catalog/types';
-import { Options, Vue } from 'vue-class-component';
-import Item from '@/components/catalog/Item.vue';
-import { mapState, mapGetters } from 'vuex';
-import { State, Action, Getter } from 'vuex-class';
 
 const namespace = 'catalog';
 
-@Options({
+@Component({
   components: {
     Item,
   },
@@ -38,6 +36,10 @@ export default class Catalog extends Vue {
 
   @Action('fetchProducts', { namespace })
   prod: any;
+
+  public detail(): void {
+    console.log(this.$route);
+  }
 
   mounted() {
     this.prod();

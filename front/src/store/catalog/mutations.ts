@@ -1,10 +1,12 @@
 import { MutationTree } from 'vuex';
-import { State } from 'vuex-class';
 import { CatalogState, Product } from './types';
 
 const mutations: MutationTree<CatalogState> = {
   setProducts: (state, payload: Array<Product>) => {
     state.products = payload;
+  },
+  setProduct: (state, payload: Product) => {
+    state.product = payload;
   },
   addProduct: (state: CatalogState, payload: Product) => {
     state.error = false;

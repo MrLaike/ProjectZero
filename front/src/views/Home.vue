@@ -1,21 +1,17 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Это просто главная страница"/>
+    <HelloWorld msg="Главная страница"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-import Item from '@/components/catalog/Item.vue';
 
-@Options({
+@Component({
   components: {
     HelloWorld,
   },
 })
-
-export default class Home extends Vue {
-
-}
+export default class Home extends Vue {}
 </script>

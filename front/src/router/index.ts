@@ -1,11 +1,12 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Vue from 'vue';
+import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
 import Catalog from '../views/Catalog.vue';
-import Basket from '../views/Basket.vue';
-import Favorites from '../views/Favorites.vue';
-// import component from '../views/Home.vue';
+import Detail from '../views/Detail.vue';
 
-const routes: Array<RouteRecordRaw> = [
+Vue.use(VueRouter);
+
+const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
@@ -22,22 +23,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/catalog',
     name: 'Catalog',
-    component: () => Catalog,
+    component: Catalog,
   },
   {
-    path: '/favorites',
-    name: 'Favorites',
-    component: () => Favorites,
-  },
-  {
-    path: '/basket',
-    name: 'Basket',
-    component: () => Basket,
+    path: '/catalog/:link',
+    name: 'Detail',
+    component: Detail,
+    props: () => ({ link: ':link' }),
   },
 ];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes,
 });
 

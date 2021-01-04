@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ProductFactory extends Factory
 {
@@ -22,11 +23,14 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->word;
         return [
             'category_id' => Category::factory(),
-            'title' => $this->faker->word,
+            'title' => $title,
+            'link' => Str::slug($title),
+            'image' => 'https://picsum.photos/' . $this->faker->numberBetween(100, 600) . '/' . $this->faker->numberBetween(100, 600),
             'desc' => $this->faker->paragraph,
-            'price' => $this->faker->numberBetween(0, 10000),
+            'price' => $this->faker->numberBetween(10, 10000),
         ];
     }
 }

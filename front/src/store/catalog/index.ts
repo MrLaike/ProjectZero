@@ -9,16 +9,22 @@ export const state: CatalogState = {
   error: false,
   products: [
     {
+      id: 1,
       title: 'sdf',
+      image: 'sdf',
+      link: 'sdf',
       price: 1000,
       currency: 'rub',
     },
-    {
-      title: 'Товарр 2',
-      price: 1899,
-      currency: 'rub',
-    },
   ],
+  product: {
+    id: 1,
+    title: 'sdf',
+    image: 'sdf',
+    link: 'sdf',
+    price: 1000,
+    currency: 'rub',
+  },
 };
 
 const namespaced = true;

@@ -17,8 +17,10 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->bigInteger('category_id');
             $table->string('title');
+            $table->string('link');
+            $table->string('image');
             $table->integer('price')->default(0);
-            $table->string('currency')->default('rub');
+            $table->string('currency')->default('₽');
             $table->text('desc');
             $table->timestamps();
         });

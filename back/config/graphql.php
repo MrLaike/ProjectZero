@@ -101,7 +101,8 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'allProducts' => \App\GraphQL\Queries\AllProductsQuery::class
+                'products' => \App\GraphQL\Queries\AllProductsQuery::class,
+                'product' => \App\GraphQL\Queries\ProductQuery::class,
             ],
             'mutation' => [
                 // 'example_mutation'  => ExampleMutation::class,

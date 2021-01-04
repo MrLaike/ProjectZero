@@ -1,6 +1,6 @@
 import VuexPersist from 'vuex-persist';
-import localForage from 'localforage';
-import { createStore } from 'vuex';
+import Vue from 'vue';
+import Vuex from 'vuex';
 import { RootState } from './types';
 import { catalog } from './catalog/index';
 
@@ -17,10 +17,9 @@ const vuexLocalStorage = new VuexPersist({
   storage: window.localStorage,
 });
 
-const plugins = [vuexLocalStorage.plugin];
+Vue.use(Vuex);
 
-export default createStore({
+export default new Vuex.Store({
   state,
   modules,
-  plugins,
 });
