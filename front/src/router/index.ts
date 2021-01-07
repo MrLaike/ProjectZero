@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
-import Catalog from '../views/Catalog.vue';
-import Detail from '../views/Detail.vue';
+import Home from '@/views/home/Home.vue';
+import Catalog from '@/views/catalog/Catalog.vue';
+import Detail from '@/views/catalog/Detail.vue';
+import Cart from '@/views/cart/Cart.vue';
+import Order from '@/views/order/Order.vue';
 
 Vue.use(VueRouter);
 
@@ -30,6 +32,16 @@ const routes: Array<RouteConfig> = [
     name: 'Detail',
     component: Detail,
     props: () => ({ link: ':link' }),
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart,
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order,
   },
 ];
 
