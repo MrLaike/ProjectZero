@@ -4,6 +4,8 @@ import Vuex from 'vuex';
 import { RootState } from './types';
 import Catalog from './modules/catalog';
 import Cart from './modules/cart';
+import Order from './modules/order';
+import Main from './modules/main';
 
 const state: RootState = {
 
@@ -12,6 +14,8 @@ const state: RootState = {
 const modules = {
   catalog: Catalog,
   cart: Cart,
+  order: Order,
+  main: Main,
 };
 
 const vuexLocalStorage = new VuexPersist({

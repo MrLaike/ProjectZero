@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('link');
             $table->string('image');
+            $table->boolean('hit');
+            $table->boolean('newest');
             $table->integer('price')->default(0);
             $table->string('currency')->default('₽');
             $table->text('desc');

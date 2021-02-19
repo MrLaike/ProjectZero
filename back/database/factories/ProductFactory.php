@@ -27,6 +27,8 @@ class ProductFactory extends Factory
         return [
             'category_id' => Category::factory(),
             'title' => $title,
+            'hit' => $this->faker->randomElement([true, false]),
+            'newest' => $this->faker->randomElement([true, false]),
             'link' => Str::slug($title),
             'image' => 'https://picsum.photos/' . $this->faker->numberBetween(100, 600) . '/' . $this->faker->numberBetween(100, 600),
             'desc' => $this->faker->paragraph,

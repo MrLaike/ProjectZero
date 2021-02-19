@@ -17,6 +17,13 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->timestamps();
+
+        });
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->cascadeOnDelete();
         });
     }
 

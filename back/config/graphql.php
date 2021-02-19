@@ -106,9 +106,19 @@ return [
             ],
             'mutation' => [
                 // 'example_mutation'  => ExampleMutation::class,
+                'addOrder' => \App\GraphQL\Mutations\OrderMutation::class,
             ],
             'middleware' => ['cors'],
             'method' => ['get', 'post'],
+        ],
+        'auth' => [
+            'query' => [
+                'profile' => \App\GraphQL\Queries\User\UserProfileQuery::class,
+            ],
+            'mutation' => [
+
+            ],
+//            'middleware' => ['auth:sanctum'],
         ],
     ],
 
@@ -122,7 +132,10 @@ return [
     // ]
     //
     'types' => [
-        'product' => \App\GraphQL\Types\ProductType::class
+        'product' => \App\GraphQL\Types\ProductType::class,
+        'order' => \App\GraphQL\Types\OrderType::class,
+        'user' => \App\GraphQL\Types\UserType::class,
+        'productsList' => \App\GraphQL\Types\OrderProductsListType::class,
         // 'example'           => ExampleType::class,
         // 'relation_example'  => ExampleRelationType::class,
         // \Rebing\GraphQL\Support\UploadType::class,

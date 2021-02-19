@@ -34,7 +34,7 @@ const catalog = namespace('catalog');
 export default class Detial extends Vue {
   link = this.$route.params.link;
 
-  public product: Product = {};
+  public product: Product | any = {};
 
   @catalog.Action('fetchProduct')
   getProduct: any;

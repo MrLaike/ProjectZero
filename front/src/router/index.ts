@@ -5,6 +5,7 @@ import Catalog from '@/views/catalog/Catalog.vue';
 import Detail from '@/views/catalog/Detail.vue';
 import Cart from '@/views/cart/Cart.vue';
 import Order from '@/views/order/Order.vue';
+import store from '@/store';
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,14 @@ const routes: Array<RouteConfig> = [
     path: '/order',
     name: 'Order',
     component: Order,
+    beforeEnter: (to, from, next) => {
+      store.dispatch('cart/cartEmpty').then(
+        (resp) => {
+          if (resp) next('/cart');
+          else next();
+        },
+      );
+    },
   },
 ];
 

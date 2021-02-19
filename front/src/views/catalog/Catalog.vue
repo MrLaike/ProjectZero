@@ -16,13 +16,11 @@
 
 import { Component, Vue } from 'vue-property-decorator';
 import {
-  State,
-  Action,
-  Getter,
   namespace,
 } from 'vuex-class';
 import Item from '@/views/catalog/components/Item.vue';
 import store from '@/store';
+import axios from 'axios';
 import { CatalogState, Product } from '@/store/modules/types';
 
 const catalog = namespace('catalog');
@@ -33,18 +31,14 @@ const catalog = namespace('catalog');
   },
 })
 export default class Catalog extends Vue {
-  public catalog: CatalogState | undefined;
+  @catalog.State('products')
+  private products: any;
 
-  public products: any = '';
-
-  @catalog.Action('fetchProducts')
-  prod: any;
+  @catalog.Action
+  private fetchProducts: any;
 
   beforeMount() {
-    this.prod()
-      .then((resp: any) => {
-        this.products = this.$store.state.catalog.products;
-      })
+    this.fetchProducts()
       .catch((err: string) => {
         console.log(err);
       });

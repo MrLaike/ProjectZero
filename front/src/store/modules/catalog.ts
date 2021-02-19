@@ -19,10 +19,22 @@ class Catalog extends VuexModule {
   private product: Product | undefined;
 
   @Action({ rawError: true })
-  public async fetchProducts() {
+  public async fetchProducts(): Promise<void> {
     let products: Array<Product>;
+    const respons = await apolloClient.query({
+      query: gql`
+        query User {
+          profile {
+            id
+          }
+        }
+      `,
+      context: {
+        type: 'auth',
+      },
+    });
+    console.log(respons.data);
     if (this.products.length) {
-      console.log(this.products);
       products = this.products;
     } else {
       const response = await apolloClient.query({
@@ -37,18 +49,17 @@ class Catalog extends VuexModule {
               price,
               currency
             }
-          }
+          },
         `,
       });
       products = response.data.products;
     }
 
     this.context.commit('setProducts', products);
-    // return response.data.products;
   }
 
   @Action({ rawError: true })
-  public async fetchProduct(link: string) {
+  public async fetchProduct(link: string): Promise<void> {
     let product: Product | undefined;
     if (this.products.length) {
       product = this.products.find((prod: Product) => prod.link === link);
@@ -71,7 +82,6 @@ class Catalog extends VuexModule {
       });
       product = response.data.product;
     }
-    console.log(this.product, product);
 
     this.context.commit('setProduct', product);
   }

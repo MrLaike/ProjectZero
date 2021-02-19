@@ -19,40 +19,30 @@ class ProductType extends GraphQLType
         return [
             'id' => [
                 'type' => Type::nonNull(Type::int()),
-                'description' => 'id'
             ],
             'title' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'title'
             ],
             'desc' => [
                 'type' => Type::string(),
-                'description' => 'desc'
             ],
             'price' => [
                 'type' => Type::nonNull(Type::int()),
-                'description' => 'price'
-
             ],
             'image' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'image'
             ],
             'link' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'link'
             ],
             'currency' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'currency'
             ],
             'updated_at' => [
                 'type' => Type::string(),
-                'description' => 'updated'
             ],
             'created_at' => [
                 'type' => Type::string(),
-                'description' => 'created'
             ]
         ];
     }

@@ -12,3 +12,16 @@ export interface CatalogState{
     products?: Array<Product>;
     product?: Product;
 };
+
+export type OrderType = {
+    fullName: string;
+    email?: string;
+    phone: string;
+    address?: string;
+    totalPrice: number;
+}
+
+export type CartType = {
+    id: number,
+    quantity: number,
+}
